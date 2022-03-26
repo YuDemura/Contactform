@@ -1,10 +1,3 @@
-<!-- <?php
-// session_start();
-//     $_SESSION['title'] = $_POST['title'];
-//     $_SESSION['email'] = $_POST['email'];
-//     $_SESSION['message'] = $_POST['message'];
-//     header('Location: complete.php');
-?> -->
 
 <!DOCTYPE html>
 <html lang="ja">
