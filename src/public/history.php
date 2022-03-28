@@ -11,10 +11,6 @@ session_start();
     <h1>送信履歴</h1>
 
 <?php
-$title = $_POST['title'];
-$email = $_POST['email'];
-$message = $_POST['message'];
-
 $dbUserName = "root";
 $dbPassword = "password";
 $pdo = new PDO("mysql:host=mysql; dbname=contactform; charset=utf8", $dbUserName, $dbPassword);
