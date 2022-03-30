@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -9,11 +8,24 @@
     <form action="./complete.php" method="post">
         <h1>お問い合わせフォーム</h1>
         <p>以下のフォームからお問い合わせ下さい。</p>
-        タイトル　（必須） <input type="text" name="title" placeholder="タイトル"><br>
-        Email　（必須）　<input type="email" name="email" placeholder="Email アドレス"><br>
-        お問い合わせ内容　（必須）<br>
-        <textarea cols="100" rows="10" maxlength="1000"  name="message" placeholder="お問い合わせ内容（1000文字まで）をお書き下さい。"></textarea><br>
-        <input type="submit" name="send" value="送信" />
+        <table>
+            <tr>
+                <td>タイトル（必須）</td>
+                <td><input type="text" name="title" placeholder="タイトル" /></td>
+            </tr>
+            <tr>
+                <td>Email（必須）</td>
+                <td><input type="email" name="email" placeholder="Emailアドレス" /></td>
+            </tr>
+            <tr>
+                <td>お問い合わせ内容（必須）</td>
+                <td><textarea cols="100" rows="10" maxlength="1000" name="content" placeholder="お問い合わせ内容（1000文字まで）お書き下さい。"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" name="button">送信</button></td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>
