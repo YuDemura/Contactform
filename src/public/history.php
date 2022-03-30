@@ -1,16 +1,4 @@
 <?php
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-    <h1>送信履歴</h1>
-
-<?php
 $dbUserName = "root";
 $dbPassword = "password";
 $pdo = new PDO("mysql:host=mysql; dbname=contactform; charset=utf8", $dbUserName, $dbPassword);
@@ -18,13 +6,26 @@ $pdo = new PDO("mysql:host=mysql; dbname=contactform; charset=utf8", $dbUserName
 $sql = "select * from contacts";
 $statement = $pdo->prepare($sql);
 $statement->execute();
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-foreach ($results as $row) {
-    echo $row["title"] . "<br>";
-    echo $row["content"] . "<br>";
-}
+$contacts = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-        <a href="index.php">戻る</a>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>送信履歴</title>
+</head>
+
+<body>
+    <div>
+        <h2>送信履歴</h2>
+        <?php foreach ($contacts as $contact) : ?>
+            <h3><?php echo $contact['title'] ?></h3>
+            <p><?php echo $contact['content'] ?></p>
+        <?php endforeach; ?>
+        <a href="./index.php">戻る</a>
+    </div>
 </body>
+
 </html>
