@@ -1,44 +1,26 @@
 <?php
+require_once(__DIR__ . '/../app/Lib/appshowMessage.php');
+require_once(__DIR__ . '/../app/Lib/submitForm.php');
+
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
-    $errors[] = 'post送信になっていません！';
+  appendError("post送信になっていません！");
 }
 
 $title = filter_input(INPUT_POST, 'title');
 $email = filter_input(INPUT_POST, 'email');
 $content = filter_input(INPUT_POST, 'content');
 if (empty($title)) {
-    $errors[] =
-        '「タイトル」が記入されていません！';
+  appendError("「タイトル」が記入されていません！");
 }
 if (empty($email)) {
-    $errors[] =
-        '「Email」が記入されていません！';
+  appendError("「Eメール」が記入されていません！");
 }
 if (empty($content)) {
-    $errors[] =
-        '「お問い合わせ内容」が記入されていません！';
+  appendError("「お問い合わせ内容」が記入されていません！");
 }
 
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=contactform; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
-
-$sql = <<<EOF
-  insert into
-    `contacts`(`title`, `email`, `content`) VALUES (:title, :email, :content)
-  ;
-EOF;
-
-$statement = $pdo->prepare($sql);
-$statement->bindValue(':title', $title, PDO::PARAM_STR);
-$statement->bindValue(':email', $email, PDO::PARAM_STR);
-$statement->bindValue(':content', $content, PDO::PARAM_STR);
-$statement->execute();
+submitForm($title, $email, $content);
 
 if (empty($errors)) {
     $message = '送信完了！！！';

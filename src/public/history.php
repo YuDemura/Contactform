@@ -1,12 +1,7 @@
 <?php
-$dbUserName = "root";
-$dbPassword = "password";
-$pdo = new PDO("mysql:host=mysql; dbname=contactform; charset=utf8", $dbUserName, $dbPassword);
+require_once(__DIR__ . '/../app/Lib/makeHistory.php');
 
-$sql = "select * from contacts";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-$contacts = $statement->fetchAll(PDO::FETCH_ASSOC);
+$contacts = makeHistory();
 ?>
 
 <!DOCTYPE html>
