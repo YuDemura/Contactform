@@ -40,7 +40,7 @@ final class ContactDao extends Dao
      * お問い合わせ内容全件取得
      *
      */
-    public function makeHistory()
+    public function makeHistory(): ?array
     {
         $sql = <<<EOF
             SELECT * FROM
