@@ -1,7 +1,9 @@
 <?php
-require_once(__DIR__ . '/../app/Lib/makeHistory.php');
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\Infrastructure\Dao\ContactDao;
 
-$contacts = makeHistory();
+$contactDao = new ContactDao();
+$contacts = $contactDao->makeHistory();
 ?>
 
 <!DOCTYPE html>

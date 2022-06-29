@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../app/Lib/appshowMessage.php');
-require_once(__DIR__ . '/../app/Lib/submitForm.php');
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\Infrastructure\Dao\ContactDao;
 
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -20,7 +21,8 @@ if (empty($content)) {
   appendError("「お問い合わせ内容」が記入されていません！");
 }
 
-submitForm($title, $email, $content);
+$contactDao = new ContactDao();
+$contactDao->submitForm($title, $email, $content);
 
 if (empty($errors)) {
     $message = '送信完了！！！';
